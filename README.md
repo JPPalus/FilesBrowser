@@ -1,5 +1,5 @@
 A simple PHPish file browser
 
-TODO:
+TODO
 - changer les icônes
 
