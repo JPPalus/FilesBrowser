@@ -82,7 +82,7 @@ if($_GET['do'] == 'list') {
 	}
 	echo json_encode(['success' => true, 'is_writable' => is_writable($file), 'results' =>$result]);
 	exit;
-	
+
 } elseif ($_GET['do'] == 'download') {
 	foreach($disallowed_patterns as $pattern)
 	if(fnmatch($pattern, $file))
@@ -166,6 +166,7 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 		"Segoe UI",
 		Arial,
 		sans-serif;
+		font-weight: bold;
 		font-size:14px;
 		color: GoldenRod;
 		width:1024;
@@ -365,8 +366,81 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 	}
 
 	.is_dir .name {
-		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAADdgAAA3YBfdWCzAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAI0SURBVFiF7Vctb1RRED1nZu5977VQVBEQBKZ1GCDBEwy+ISgCBsMPwOH4CUXgsKQOAxq5CaKChEBqShNK222327f79n0MgpRQ2qC2twKOGjE352TO3Jl76e44S8iZsgOww+Dhi/V3nePOsQRFv679/qsnV96ehgAeWvBged3vXi+OJewMW/Q+T8YCLr18fPnNqQq4fS0/MWlQdviwVqNpp9Mvs7l8Wn50aRH4zQIAqOruxANZAG4thKmQA8D7j5OFw/iIgLXvo6mR/B36K+LNp71vVd1cTMR8BFmwTesc88/uLQ5FKO4+k4aarbuPnq98mbdo2q70hmU0VREkEeCOtqrbMprmFqM1psoYAsg0U9EBtB0YozUWzWpVZQgBxMm3YPoCiLpxRrPaYrBKRSUL5qn2AgFU0koMVlkMOo6G2SIymQCAGE/AGHRsWbCRKc8VmaBN4wBIwkZkFmxkWZDSFCwyommZSABgCmZBSsuiHahA8kA2iZYzSapAsmgHlgfdVyGLTFg3iZqQhAqZB923GGUgQhYRVElmAUXIGGVgedQ9AJJnAkqyClCEkkfdM1Pt13VHdxDpnof0jgxB+mYqO5PaCSDRIAbgDgdpKjtmwm13irsnq4ATdKeYcNvUZAt0dg5NVwEQFKrJlpn45lwh/LpbWdela4K5QsXEN61tytWr81l5YSY/n4wdQH84qjd2J6vEz+W0BOAGgLlE/AMAPQCv6e4gmWYC/QF3d/7zf8P/An4AWL/T1+B2nyIAAAAASUVORK5CYII=) no-repeat scroll 0px 10px;
-		padding:15px 0 10px 40px;
+		background: url(../Resources/Files/folder.png) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+ 	.pdf {
+		background: url(../Resources/Files/pdf.ico) no-repeat;
+		background-position: 5px 8px;
+		background-size: 28px 31px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.undefined {
+		background: url(../Resources/Files/undefined.ico) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.audio {
+		background: url(../Resources/Files/audio.ico) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.binary {
+		background: url(../Resources/Files/binary.ico) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.tex {
+		background: url(../Resources/Files/tex.ico) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.texte {
+		background: url(../Resources/Files/texte.ico) no-repeat;
+		background-position: 6px 11px;
+		background-size: 24px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.image {
+		background: url(../Resources/Files/image.ico) no-repeat;
+		background-position: 6px 10px;
+		background-size: 25px 27px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.video {
+		background: url(../Resources/Files/video.ico) no-repeat;
+		background-position: 8px 13px;
+		background-size: 22px 25px;
+		color: GoldenRod;
+		font-weight: bold;
+	}
+
+	.code {
+		background: url(../Resources/Files/code.ico) no-repeat;
+		background-position: 5px 10px;
+		background-size: 27px 27px;
 		color: GoldenRod;
 		font-weight: bold;
 	}
@@ -379,7 +453,7 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 	}
 	</style>
 
-	<script src="../resources/jquery-3.5.1.min.js"></script>
+	<script src="../Resources/Files/jquery-3.5.1.min.js"></script>
 
 	<script>
 
@@ -481,6 +555,36 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 			.text(data.name);
 			var allow_direct_link = <?php echo $allow_direct_link?'true':'false'; ?>;
 
+			if (!data.is_dir) $link.attr('data-type', data.path.split('.').pop());
+
+			var texte = ["txt", "rtf", "xls"];
+			var audio = ["wav", "mp3", "MP3", "WAV", "wave", "flac", "m3u", "ogg", "midi"];
+			var image = ["bmp", "jpeg", "jpg", "gif", "tif", "webp", "png"];
+			var video = ["mp4", "wmv", "MP4", "mov", "flv", "webm", "mpeg", "mpg", "flv"];
+			var binary = ["exe", "bat", "sh"];
+			var pdf = ["pdf"];
+			var code = ["c", "c++", "cpp", "h", "hpp", "py", "html", "js", "rkt"];
+
+			if (!data.is_dir) {
+				if (texte.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("texte");
+				} else if  (image.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("image");
+				} else if (audio.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("audio");
+				} else if (video.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("video");
+				} else if (pdf.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("pdf");
+				} else if (code.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("code");
+				} else if (binary.indexOf($link.attr('data-type')) != -1) {
+					$link.addClass("binary");
+				} else {
+					$link.addClass("undefined");
+				}
+			}
+
 			if (!data.is_dir && !allow_direct_link)  $link.css('pointer-events','none');
 
 			var $dl_link = $('<a/>').attr('href','?do=download&file='+ encodeURIComponent(data.path))
@@ -540,7 +644,7 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 	</head>
 
 	<div>
-		<img class="aquila" src="../resources/aquila_large.png">
+		<img class="aquila" src="../Resources/Files/aquila_large.png">
 	</div>
 
 
